@@ -1,9 +1,16 @@
 name: 'Query shodan internetdb'
 description: 'Query shodan internetdb for an entire CIDR'
-author: 'GitHub'
-inputs:
-  cidr:
-    description: 'The CIDR range to query'
+author: 'techliberation'
+
+on:
+  workflow_call:
+    inputs:
+      cidr:
+        description: 'The CIDR range to query'
+        required: true
+        type: string
+
+
 
 jobs:
   query:
