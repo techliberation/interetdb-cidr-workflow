@@ -10,6 +10,12 @@ on:
         required: true
         type: string
 
+inputs:
+  cidr:
+    description: 'The CIDR range to query'
+    required: true
+    type: string
+
 
 
 jobs:
@@ -22,6 +28,6 @@ jobs:
       - run: go install github.com/j3ssie/sdlookup@latest
 
       - name: query CIDR
-        run:  echo ${{ inputs.cidr }} | sdlookup -json > $(echo ${{ inputs.cidr }} | tr / _).json
+        run:  echo "${{ github.event.inputs.cidr }}"" | sdlookup -json > $(echo "${{ github.event.inputs.cidr }}" | tr / _).json
 
 
